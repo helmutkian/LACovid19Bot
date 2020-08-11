@@ -28,7 +28,7 @@ Avail ICU Beds: 819
 * since 8/2
 ```
 
-To run execute
+To run, ensure the Docker has access to the project folder and execute
 
 ````
 docker-compose build
