@@ -1,0 +1,99 @@
+---
+service:
+  name: la-covid-19-bot
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-webpack
+  - serverless-plugin-typescript
+  - serverless-dynamodb-local
+  - serverless-offline-direct-lambda
+  - serverless-offline
+
+custom:
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-west-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: "*"
+
+package:
+  individually: true
+
+functions:
+  scrape:
+    handler: src/handler/scrapeCases.handle
+    environment:
+      COUNTER_URL: ${env:COUNTER_URL}
+      PAGE_URL: ${env:PAGE_URL}
+      REDIS_HOST: ${env:REDIS_HOST}
+      REDIS_PORT: ${env:REDIS_PORT}
+      HTTP_TIMEOUT: ${env:HTTP_TIMEOUT}
+  tweet:
+    handler: src/handler/tweetStatus.handle
+    environment:
+      TWITTER_CONSUMER_KEY: ${env:TWITTER_CONSUMER_KEY}
+      TWITTER_CONSUMER_SECRET: ${env:TWITTER_CONSUMER_SECRET}
+      TWITTER_ACCESS_TOKEN: ${env:TWITTER_ACCESS_TOKEN}
+      TWITTER_TOKEN_SECRET: ${env:TWITTER_TOKEN_SECRET}
+  query:
+    handler: src/handler/queryHospitalizations.handle
+    environment:
+      ODATA_URL: ${env:ODATA_URL}
+      REDIS_HOST: ${env:REDIS_HOST}
+      REDIS_PORT: ${env:REDIS_PORT}
+      HTTP_TIMEOUT: ${env:HTTP_TIMEOUT}
+
+resources:
+  Resources:
+    DailyCasesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: DailyCases
+        KeySchema:
+          - AttributeName: hash
+            KeyType: HASH
+        AttributeDefinitions:
+          - AttributeName: hash
+            AttributeType: S
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    HospitalizationsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Hospitalizations
+        KeySchema:
+          - AttributeName: hash
+            KeyType: HASH
+        AttributeDefinitions:
+          - AttributeName: hash
+            AttributeType: S
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    TweetStatusTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: TweetStatus
+        KeySchema:
+          - AttributeName: hash
+            KeyType: HASH
+        AttributeDefinitions:
+          - AttributeName: hash
+            AttributeType: S
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

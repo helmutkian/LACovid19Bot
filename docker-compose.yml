@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    command: ["sls", "offline", "start", "--host", "0.0.0.0"]
+    volumes: 
+      - /usr/app
+    ports:
+      - 3000:3000
+      - 3002:3002
+      - 8000:8000
+    environment:
+      - NODE_OPTIONS="--max-old-space-size=4096"
+      - NODE_ENV=development

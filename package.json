@@ -1,0 +1,40 @@
+{
+  "name": "la-covid-19-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-lambda": "^1.0.6",
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "fp-ts": "^2.8.1",
+    "ioredis": "^4.17.3",
+    "lodash": "^4.17.19",
+    "moment-timezone": "^0.5.31",
+    "source-map-support": "^0.5.19",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.59",
+    "@types/cheerio": "^0.22.21",
+    "@types/ioredis": "^4.17.3",
+    "@types/lodash": "^4.14.159",
+    "@types/twit": "^2.2.25",
+    "aws-sdk": "^2.729.0",
+    "ioredis-mock": "^4.21.2",
+    "serverless-dotenv-plugin": "^3.0.0",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^6.5.0",
+    "serverless-offline-direct-lambda": "0.0.1",
+    "serverless-plugin-typescript": "^1.1.9",
+    "serverless-webpack": "^5.3.3",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1"
+  }
+}
