@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-lambda": "^1.0.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "fp-ts": "^2.8.1",
     "ioredis": "^4.17.3",
