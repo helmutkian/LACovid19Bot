@@ -14,7 +14,7 @@
     "cheerio": "^1.0.0-rc.3",
     "fp-ts": "^2.8.1",
     "ioredis": "^4.17.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment-timezone": "^0.5.31",
     "source-map-support": "^0.5.19",
     "twit": "^2.2.11"
