@@ -25,7 +25,7 @@
     "@types/ioredis": "^4.17.3",
     "@types/lodash": "^4.14.159",
     "@types/twit": "^2.2.25",
-    "aws-sdk": "^2.729.0",
+    "aws-sdk": "^2.814.0",
     "ioredis-mock": "^4.21.2",
     "serverless-dotenv-plugin": "^3.0.0",
     "serverless-dynamodb-local": "^0.2.39",
