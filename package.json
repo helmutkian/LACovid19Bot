@@ -28,7 +28,7 @@
     "aws-sdk": "^2.729.0",
     "ioredis-mock": "^4.21.2",
     "serverless-dotenv-plugin": "^3.0.0",
-    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-dynamodb-local": "^1.0.2",
     "serverless-offline": "^6.5.0",
     "serverless-offline-direct-lambda": "0.0.1",
     "serverless-plugin-typescript": "^1.1.9",
